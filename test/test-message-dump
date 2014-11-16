@@ -1,0 +1,260 @@
+object(Zend\Mail\Message)#2 (3) {
+  ["body":protected]=>
+  string(582) "--20cf3040e54a2b96950507fa71e2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+LS0tDQrQoSDRg9Cy0LDQttC10L3QuNC10LwsINCS0LDQu9C10YDQsCDQm9C10L7QvdGC0YzQtdCy
+IChmZWVkYmVlKS4NCg==
+--20cf3040e54a2b96950507fa71e2
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PGRpdiBkaXI9Imx0ciI+PGJyIGNsZWFyPSJhbGwiPjxkaXY+PGRpdiBjbGFzcz0iZ21haWxfc2ln
+bmF0dXJlIj48ZGl2Pjxicj48L2Rpdj48ZGl2Pi0tLTwvZGl2PtChINGD0LLQsNC20LXQvdC40LXQ
+vCwg0JLQsNC70LXRgNCwINCb0LXQvtC90YLRjNC10LIgKGZlZWRiZWUpLjwvZGl2PjwvZGl2Pjwv
+ZGl2Pg0K
+--20cf3040e54a2b96950507fa71e2--
+"
+  ["headers":protected]=>
+  object(Zend\Mail\Headers)#3 (4) {
+    ["pluginClassLoader":protected]=>
+    object(Zend\Mail\Header\HeaderLoader)#21 (1) {
+      ["plugins":protected]=>
+      array(21) {
+        ["bcc"]=>
+        string(20) "Zend\Mail\Header\Bcc"
+        ["cc"]=>
+        string(19) "Zend\Mail\Header\Cc"
+        ["contenttype"]=>
+        string(28) "Zend\Mail\Header\ContentType"
+        ["content_type"]=>
+        string(28) "Zend\Mail\Header\ContentType"
+        ["content-type"]=>
+        string(28) "Zend\Mail\Header\ContentType"
+        ["contenttransferencoding"]=>
+        string(40) "Zend\Mail\Header\ContentTransferEncoding"
+        ["content_transfer_encoding"]=>
+        string(40) "Zend\Mail\Header\ContentTransferEncoding"
+        ["content-transfer-encoding"]=>
+        string(40) "Zend\Mail\Header\ContentTransferEncoding"
+        ["date"]=>
+        string(21) "Zend\Mail\Header\Date"
+        ["from"]=>
+        string(21) "Zend\Mail\Header\From"
+        ["message-id"]=>
+        string(26) "Zend\Mail\Header\MessageId"
+        ["mimeversion"]=>
+        string(28) "Zend\Mail\Header\MimeVersion"
+        ["mime_version"]=>
+        string(28) "Zend\Mail\Header\MimeVersion"
+        ["mime-version"]=>
+        string(28) "Zend\Mail\Header\MimeVersion"
+        ["received"]=>
+        string(25) "Zend\Mail\Header\Received"
+        ["replyto"]=>
+        string(24) "Zend\Mail\Header\ReplyTo"
+        ["reply_to"]=>
+        string(24) "Zend\Mail\Header\ReplyTo"
+        ["reply-to"]=>
+        string(24) "Zend\Mail\Header\ReplyTo"
+        ["sender"]=>
+        string(23) "Zend\Mail\Header\Sender"
+        ["subject"]=>
+        string(24) "Zend\Mail\Header\Subject"
+        ["to"]=>
+        string(19) "Zend\Mail\Header\To"
+      }
+    }
+    ["headersKeys":protected]=>
+    array(16) {
+      [0]=>
+      string(8) "received"
+      [1]=>
+      string(8) "received"
+      [2]=>
+      string(13) "dkimsignature"
+      [3]=>
+      string(11) "mimeversion"
+      [4]=>
+      string(9) "xreceived"
+      [5]=>
+      string(8) "received"
+      [6]=>
+      string(9) "inreplyto"
+      [7]=>
+      string(10) "references"
+      [8]=>
+      string(4) "date"
+      [9]=>
+      string(9) "messageid"
+      [10]=>
+      string(7) "subject"
+      [11]=>
+      string(4) "from"
+      [12]=>
+      string(2) "to"
+      [13]=>
+      string(11) "contenttype"
+      [14]=>
+      string(9) "xebmllist"
+      [15]=>
+      string(16) "xebmllistsubject"
+    }
+    ["headers":protected]=>
+    array(16) {
+      [0]=>
+      object(Zend\Mail\Header\Received)#22 (1) {
+        ["value":protected]=>
+        string(217) "from mail-ie0-f169.google.com ([209.85.223.169])by srv.commontools.net with
+ esmtp (Exim 4.80)(envelope-from <feedbee@gmail.com>)id 1Xq0YR-0005XP-4gfor
+ some-list@srv.commontools.net; Sun, 16 Nov 2014 17:11:51 +0300"
+      }
+      [1]=>
+      object(Zend\Mail\Header\Received)#4 (1) {
+        ["value":protected]=>
+        string(134) "by mail-ie0-f169.google.com with SMTP id y20so3670230ier.0for
+ <some-list@srv.commontools.net>; Sun, 16 Nov 2014 06:11:45 -0800 (PST)"
+      }
+      [2]=>
+      object(Zend\Mail\Header\GenericHeader)#5 (3) {
+        ["fieldName":protected]=>
+        string(14) "DKIM-Signature"
+        ["fieldValue":protected]=>
+        string(538) "v=1; a=rsa-sha256; c=relaxed/relaxed;d=gmail.com; s=20120113;h=mime-version:in-reply-to:references:date:message-id:subject:from:to:content-type;bh=WHQzg1+oLL0WGTL8eWzBBZY/u1pwZB6KASgdySuU+9s=;b=TneVMUDnEBmcEa5Kmj6oZVui1NNZtBi3RsFRbt4aPJpwJskVa5QeGfYazJWixC3ovhEbdPPqTMpKjHP79thgh8TSy742UvcX5/OYKcgBz8RHVC10f9vdisM082HzU/kzQi8onYJILY0fij1FtyDKg+fBvDaQhsgej/qnJOo0dSCMR4WjGzk4cjfkvr/ZqPjY+HPW+/+hPgDsjxakn2jOMeutZxaiTH24nIEgkFkwpLSIAiyx1etL1s2TNBldNgZT5W4Y7xq4rd0nk+EZhGOyFASfB7ISoLAH6O4FF/OIhmLToI6vkadqJLxil/TUJS+VCbyOiuQr1ee0t1lsVj2sEA=="
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [3]=>
+      object(Zend\Mail\Header\MimeVersion)#6 (1) {
+        ["version":protected]=>
+        string(3) "1.0"
+      }
+      [4]=>
+      object(Zend\Mail\Header\GenericHeader)#7 (3) {
+        ["fieldName":protected]=>
+        string(10) "X-Received"
+        ["fieldValue":protected]=>
+        string(98) "by 10.42.24.10 with SMTP id u10mr2019185icb.58.1416147105452; Sun,16 Nov 2014 06:11:45 -0800 (PST)"
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [5]=>
+      object(Zend\Mail\Header\Received)#8 (1) {
+        ["value":protected]=>
+        string(64) "by 10.42.179.66 with HTTP; Sun, 16 Nov 2014 06:11:45 -0800 (PST)"
+      }
+      [6]=>
+      object(Zend\Mail\Header\GenericHeader)#9 (3) {
+        ["fieldName":protected]=>
+        string(11) "In-Reply-To"
+        ["fieldValue":protected]=>
+        string(68) "<CAJ18BxVvbk4Cum6vhFzDNbbw26Nub4qe9=HWtZJji=2z01A6-Q@mail.gmail.com>"
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [7]=>
+      object(Zend\Mail\Header\GenericHeader)#10 (3) {
+        ["fieldName":protected]=>
+        string(10) "References"
+        ["fieldValue":protected]=>
+        string(68) "<CAJ18BxVvbk4Cum6vhFzDNbbw26Nub4qe9=HWtZJji=2z01A6-Q@mail.gmail.com>"
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [8]=>
+      object(Zend\Mail\Header\Date)#11 (1) {
+        ["value":protected]=>
+        string(31) "Sun, 16 Nov 2014 17:11:45 +0300"
+      }
+      [9]=>
+      object(Zend\Mail\Header\GenericHeader)#12 (3) {
+        ["fieldName":protected]=>
+        string(10) "Message-ID"
+        ["fieldValue":protected]=>
+        string(68) "<CAJ18BxVmuREH-ci3eWwAGip+w2Jxx2eJv9h7JoPabgFx+4_vJA@mail.gmail.com>"
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [10]=>
+      object(Zend\Mail\Header\Subject)#13 (2) {
+        ["subject":protected]=>
+        string(9) "Fwd: Test"
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [11]=>
+      object(Zend\Mail\Header\From)#14 (3) {
+        ["fieldName":protected]=>
+        string(4) "From"
+        ["addressList":protected]=>
+        object(Zend\Mail\AddressList)#23 (1) {
+          ["addresses":protected]=>
+          array(1) {
+            ["feedbee@gmail.com"]=>
+            object(Zend\Mail\Address)#24 (2) {
+              ["email":protected]=>
+              string(17) "feedbee@gmail.com"
+              ["name":protected]=>
+              string(29) "Валера Леонтьев"
+            }
+          }
+        }
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [12]=>
+      object(Zend\Mail\Header\To)#15 (3) {
+        ["fieldName":protected]=>
+        string(2) "To"
+        ["addressList":protected]=>
+        object(Zend\Mail\AddressList)#25 (1) {
+          ["addresses":protected]=>
+          array(1) {
+            ["some-list@srv.commontools.net"]=>
+            object(Zend\Mail\Address)#26 (2) {
+              ["email":protected]=>
+              string(29) "some-list@srv.commontools.net"
+              ["name":protected]=>
+              NULL
+            }
+          }
+        }
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [13]=>
+      object(Zend\Mail\Header\ContentType)#16 (2) {
+        ["type":protected]=>
+        string(21) "multipart/alternative"
+        ["parameters":protected]=>
+        array(1) {
+          ["boundary"]=>
+          string(28) "20cf3040e54a2b96950507fa71e2"
+        }
+      }
+      [14]=>
+      object(Zend\Mail\Header\GenericHeader)#17 (3) {
+        ["fieldName":protected]=>
+        string(11) "X-EBML-LIST"
+        ["fieldValue":protected]=>
+        string(9) "some-list"
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+      [15]=>
+      object(Zend\Mail\Header\GenericHeader)#18 (3) {
+        ["fieldName":protected]=>
+        string(19) "X-EBML-LIST-SUBJECT"
+        ["fieldValue":protected]=>
+        string(10) "[SomeList]"
+        ["encoding":protected]=>
+        string(5) "ASCII"
+      }
+    }
+    ["encoding":protected]=>
+    string(5) "ASCII"
+  }
+  ["encoding":protected]=>
+  string(5) "ASCII"
+}
