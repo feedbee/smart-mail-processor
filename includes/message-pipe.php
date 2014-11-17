@@ -1,7 +1,9 @@
 <?php
 
 /**
- * Usage for exim4 filter file: pipe "php $path_to_smf/bin/input.php $sender_address"
+ * Input receiver for SMTP server piping
+ * In your application file: list($message, $additionalData) = require('$path_to_smp/includes/message-pipe.php');
+ * Usage for Exim4 filter file: pipe "php $path_to_bin/your_application.php $sender_address"
  * Raw mail body given on STDIN
  */
 
@@ -18,10 +20,7 @@ if (count($rawMessage) < 1) {
     die('Message body (read from standard input) is empty');
 }
 
-require 'bootstrap.php';
-
 $rawClearedMessage = substr($rawMessage, strpos($rawMessage, "\n") + 1);
 $message = \Zend\Mail\Message::fromString($rawClearedMessage);
 
-$forwarder = new \Feedbee\Smp\Processor;
-$forwarder->process($message, ['sender_address' => $senderAddress]);
+return [$message, ['sender_address' => $senderAddress]];

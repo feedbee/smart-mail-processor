@@ -1,3 +1,3 @@
 #!/bin/sh
 
-php ../bin/input.php `cat test-params` < test-input
+php forwarder-test.php `cat test-params` < test-input
