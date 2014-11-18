@@ -4,13 +4,8 @@ namespace Feedbee\Smp\Rule;
 
 use \Zend\Mail\Message;
 
-class HasHeader implements RuleInterface
+class HasHeader extends AbstractRule implements RuleInterface
 {
-    /**
-     * @var \Feedbee\Smp\Task[]
-     */
-    private $tasks;
-
     /**
      * @var string
      */
@@ -23,7 +18,7 @@ class HasHeader implements RuleInterface
     public function __construct($headerName, array $tasks)
     {
         $this->headerName = $headerName;
-        $this->tasks = $tasks;
+        parent::__construct($tasks);
     }
 
     /**
@@ -34,13 +29,5 @@ class HasHeader implements RuleInterface
     public function validate(Message $message, array $additionalArguments)
     {
         return $message->getHeaders()->has($this->headerName);
-    }
-
-    /**
-     * @return \Feedbee\Smp\Task
-     */
-    public function getTasks()
-    {
-        return $this->tasks;
     }
 }

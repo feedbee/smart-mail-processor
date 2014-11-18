@@ -14,7 +14,12 @@ interface RuleInterface
     public function validate(Message $message, array $additionalArguments);
 
     /**
-     * @return \Feedbee\Smp\Task
+     * @param \Feedbee\Smp\Task[] $tasks
+     */
+    public function setTasks(array $tasks);
+
+    /**
+     * @return \Feedbee\Smp\Task[]
      */
     public function getTasks();
 }
