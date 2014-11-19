@@ -4,7 +4,7 @@ namespace Feedbee\Smp\Rule;
 
 use \Zend\Mail\Message;
 
-class Decorator extends AbstractRule implements RuleInterface
+class Decorator implements RuleInterface
 {
     /**
      * @var RuleInterface
@@ -13,12 +13,10 @@ class Decorator extends AbstractRule implements RuleInterface
 
     /**
      * @param \Feedbee\Smp\Rule\RuleInterface $innerRule
-     * @param \Feedbee\Smp\Task[] $tasks
      */
-    public function __construct(RuleInterface $innerRule, array $tasks)
+    public function __construct(RuleInterface $innerRule)
     {
         $this->innerRule = $innerRule;
-        parent::__construct($tasks);
     }
 
     /**
@@ -29,22 +27,6 @@ class Decorator extends AbstractRule implements RuleInterface
     public function validate(Message $message, array $additionalArguments)
     {
         return $this->getInnerRule()->validate($message, $additionalArguments);
-    }
-
-    /**
-     * @return \Feedbee\Smp\Task[]
-     */
-    public function getTasks()
-    {
-        return $this->getInnerRule()->getTasks();
-    }
-
-    /**
-     * @param \Feedbee\Smp\Task[] $tasks
-     */
-    public function setTasks(array $tasks)
-    {
-        $this->getInnerRule()->setTasks($tasks);
     }
 
     /**

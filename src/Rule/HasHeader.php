@@ -4,7 +4,7 @@ namespace Feedbee\Smp\Rule;
 
 use \Zend\Mail\Message;
 
-class HasHeader extends AbstractRule implements RuleInterface
+class HasHeader implements RuleInterface
 {
     /**
      * @var string
@@ -13,12 +13,10 @@ class HasHeader extends AbstractRule implements RuleInterface
 
     /**
      * @param string $headerName
-     * @param \Feedbee\Smp\Task[] $tasks
      */
-    public function __construct($headerName, array $tasks)
+    public function __construct($headerName)
     {
         $this->headerName = $headerName;
-        parent::__construct($tasks);
     }
 
     /**
