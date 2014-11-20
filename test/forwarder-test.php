@@ -6,7 +6,10 @@ list($message, $additionalData) = require __DIR__ . '/../includes/message-pipe.p
 
 $forwarder = new \Feedbee\Smp\Processor;
 $forwarder->addRule(new \Feedbee\Smp\Rule\Rule(
-    [new \Feedbee\Smp\Condition\HasHeader('Subject')],
+    [
+        new \Feedbee\Smp\Condition\Header\HasHeader('Subject'),
+        new \Feedbee\Smp\Condition\Header\HeaderValueRegexp('From', '/feedbee/'),
+    ],
     [new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\ForwardAction)]
 ));
 $forwarder->process($message, $additionalData);

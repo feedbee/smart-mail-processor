@@ -17,7 +17,16 @@ class Callback implements ConditionInterface
      */
     public function __construct(callable $callback)
     {
-        $this->callback = $callback;
+        $this->setCallback($callback);
+    }
+
+    /**
+     * @return bool
+     */
+    public function executeCallback()
+    {
+        $callback = $this->getCallback();
+        return call_user_func_array($callback, func_get_args());
     }
 
     /**

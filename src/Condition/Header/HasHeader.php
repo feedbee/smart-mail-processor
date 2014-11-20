@@ -1,22 +1,20 @@
 <?php
 
-namespace Feedbee\Smp\Condition;
+namespace Feedbee\Smp\Condition\Header;
 
+use Feedbee\Smp\Condition\ConditionInterface;
 use Feedbee\Smp\Subject;
 
 class HasHeader implements ConditionInterface
 {
-    /**
-     * @var string
-     */
-    private $headerName;
+    use HeaderTrait;
 
     /**
      * @param string $headerName
      */
     public function __construct($headerName)
     {
-        $this->headerName = $headerName;
+        $this->setHeaderName($headerName);
     }
 
     /**
@@ -25,6 +23,6 @@ class HasHeader implements ConditionInterface
      */
     public function validate(Subject $subject)
     {
-        return $subject->getMessage()->getHeaders()->has($this->headerName);
+        return $subject->getMessage()->getHeaders()->has($this->getHeaderName());
     }
 }
