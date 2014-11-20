@@ -4,14 +4,17 @@ namespace Feedbee\Smp\Collection;
 
 use Traversable;
 
-class Collection implements \IteratorAggregate
+class Collection implements CollectionInterface
 {
     /**
      * @var array
      */
     private $values;
 
-    public function __construct(array $values = [])
+	/**
+	 * @param array $values
+	 */
+	public function __construct(array $values = [])
     {
         $this->setValues($values);
     }
