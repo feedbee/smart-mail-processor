@@ -25,37 +25,17 @@ class Processor
      */
     public function process(Message $message, array $additionalArguments = [])
     {
-        $this->doTasks($message, $additionalArguments, $this->applyRules($message, $additionalArguments));
+        $this->applyRules($message, $additionalArguments);
     }
 
     /**
      * @param \Zend\Mail\Message $message
      * @param array $additionalArguments
-     * @return TaskInterface[]
      */
     protected function applyRules(Message $message, array $additionalArguments)
     {
-        $tasks = [];
         foreach ($this->getRules() as $rule) {
-            foreach ($rule->getConditions() as $condition) {
-                if (!$condition->validate($message, $additionalArguments)) {
-                    continue 2;
-                }
-            }
-            $tasks += $rule->getTasks();
-        }
-        return $tasks;
-    }
-
-    /**
-     * @param \Zend\Mail\Message Message $message
-     * @param array $additionalArguments
-     * @param \Feedbee\Smp\Task\TaskInterface[] $tasks
-     */
-    protected function doTasks(Message $message, array $additionalArguments, array $tasks)
-    {
-        foreach ($tasks as $task) {
-            $task->execute($message, $additionalArguments);
+			$rule->apply($message, $additionalArguments);
         }
     }
 

@@ -5,6 +5,7 @@ namespace Feedbee\Smp\Rule;
 use Feedbee\Smp\Collection\UniqueCollection;
 use Feedbee\Smp\Condition\ConditionInterface;
 use Feedbee\Smp\Task\TaskInterface;
+use Zend\Mail\Message;
 
 class Rule implements RuleInterface
 {
@@ -23,6 +24,48 @@ class Rule implements RuleInterface
         $this->conditions = new UniqueCollection($conditions);
         $this->tasks = new UniqueCollection($tasks);
     }
+
+	/**
+	 * @param \Zend\Mail\Message Message $message
+	 * @param array $additionalArguments
+	 * @return bool
+	 */
+	public function apply(Message $message, array $additionalArguments)
+	{
+		if ($this->checkConditions($message, $additionalArguments)) {
+			$this->doTasks($message, $additionalArguments);
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * @param Message $message
+	 * @param array $additionalArguments
+	 * @return bool
+	 */
+	protected function checkConditions(Message $message, array $additionalArguments)
+	{
+		foreach ($this->getConditions() as $condition) {
+			if (!$condition->validate($message, $additionalArguments)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * @param Message $message
+	 * @param array $additionalArguments
+	 */
+	protected function doTasks(Message $message, array $additionalArguments)
+	{
+		foreach ($this->getTasks() as $task) {
+			$task->execute($message, $additionalArguments);
+		}
+	}
 
     /**
      * @return \Feedbee\Smp\Condition\ConditionInterface[]
