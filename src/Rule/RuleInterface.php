@@ -4,16 +4,15 @@ namespace Feedbee\Smp\Rule;
 
 use Feedbee\Smp\Condition\ConditionInterface;
 use Feedbee\Smp\Task\TaskInterface;
-use Zend\Mail\Message;
+use Feedbee\Smp\Subject;
 
 interface RuleInterface
 {
 	/**
-	 * @param \Zend\Mail\Message Message $message
-	 * @param array $additionalArguments
+	 * @param \Feedbee\Smp\Subject $subject
 	 * @return bool
 	 */
-	public function apply(Message $message, array $additionalArguments);
+	public function apply(Subject $subject);
 
 	/**
 	 * @param \Feedbee\Smp\Condition\ConditionInterface $condition

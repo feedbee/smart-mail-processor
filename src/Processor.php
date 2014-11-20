@@ -25,17 +25,17 @@ class Processor
      */
     public function process(Message $message, array $additionalArguments = [])
     {
-        $this->applyRules($message, $additionalArguments);
+		$subject = new Subject($message, $additionalArguments);
+        $this->applyRules($subject);
     }
 
     /**
-     * @param \Zend\Mail\Message $message
-     * @param array $additionalArguments
+     * @param \Feedbee\Smp\Subject $subject
      */
-    protected function applyRules(Message $message, array $additionalArguments)
+    protected function applyRules(Subject $subject)
     {
         foreach ($this->getRules() as $rule) {
-			$rule->apply($message, $additionalArguments);
+			$rule->apply($subject);
         }
     }
 

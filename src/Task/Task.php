@@ -3,7 +3,7 @@
 namespace Feedbee\Smp\Task;
 
 use Feedbee\Smp\Action\ActionInterface;
-use Zend\Mail\Message;
+use Feedbee\Smp\Subject;
 
 class Task implements TaskInterface
 {
@@ -28,13 +28,12 @@ class Task implements TaskInterface
     }
 
     /**
-     * @param \Zend\Mail\Message Message $message
-     * @param array $additionalArguments
+     * @param \Feedbee\Smp\Subject $subject
      */
-    public function execute(Message $message, array $additionalArguments)
+    public function execute(Subject $subject)
     {
         $action = $this->getAction();
-        $action($message, $additionalArguments);
+        $action($subject);
     }
 
     /**

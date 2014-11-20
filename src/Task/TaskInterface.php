@@ -3,7 +3,7 @@
 namespace Feedbee\Smp\Task;
 
 use Feedbee\Smp\Action\ActionInterface;
-use Zend\Mail\Message;
+use Feedbee\Smp\Subject;
 
 interface TaskInterface
 {
@@ -18,10 +18,9 @@ interface TaskInterface
 	public function getData();
 
 	/**
-	 * @param \Zend\Mail\Message Message $message
-	 * @param array $additionalArguments
+	 * @param \Feedbee\Smp\Subject $subject
 	 */
-	public function execute(Message $message, array $additionalArguments);
+	public function execute(Subject $subject);
 
 	/**
 	 * @return \Feedbee\Smp\Action\ActionInterface

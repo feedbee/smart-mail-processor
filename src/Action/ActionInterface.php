@@ -2,14 +2,13 @@
 
 namespace Feedbee\Smp\Action;
 
-use Zend\Mail\Message;
+use Feedbee\Smp\Subject;
 
 interface ActionInterface
 {
     /**
-     * @param \Zend\Mail\Message $message
-     * @param $additionalArguments
+     * @param \Feedbee\Smp\Subject $subject
      * @return void
      */
-    public function __invoke(Message $message, array $additionalArguments);
+    public function __invoke(Subject $subject);
 }

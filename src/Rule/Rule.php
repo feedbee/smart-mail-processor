@@ -5,7 +5,7 @@ namespace Feedbee\Smp\Rule;
 use Feedbee\Smp\Collection\UniqueCollection;
 use Feedbee\Smp\Condition\ConditionInterface;
 use Feedbee\Smp\Task\TaskInterface;
-use Zend\Mail\Message;
+use Feedbee\Smp\Subject;
 
 class Rule implements RuleInterface
 {
@@ -26,14 +26,13 @@ class Rule implements RuleInterface
     }
 
 	/**
-	 * @param \Zend\Mail\Message Message $message
-	 * @param array $additionalArguments
+	 * @param \Feedbee\Smp\Subject $subject
 	 * @return bool
 	 */
-	public function apply(Message $message, array $additionalArguments)
+	public function apply(Subject $subject)
 	{
-		if ($this->checkConditions($message, $additionalArguments)) {
-			$this->doTasks($message, $additionalArguments);
+		if ($this->checkConditions($subject)) {
+			$this->doTasks($subject);
 			return true;
 		}
 
@@ -41,14 +40,13 @@ class Rule implements RuleInterface
 	}
 
 	/**
-	 * @param Message $message
-	 * @param array $additionalArguments
+	 * @param \Feedbee\Smp\Subject $subject
 	 * @return bool
 	 */
-	protected function checkConditions(Message $message, array $additionalArguments)
+	protected function checkConditions(Subject $subject)
 	{
 		foreach ($this->getConditions() as $condition) {
-			if (!$condition->validate($message, $additionalArguments)) {
+			if (!$condition->validate($subject)) {
 				return false;
 			}
 		}
@@ -57,13 +55,12 @@ class Rule implements RuleInterface
 	}
 
 	/**
-	 * @param Message $message
-	 * @param array $additionalArguments
+	 * @param \Feedbee\Smp\Subject $subject
 	 */
-	protected function doTasks(Message $message, array $additionalArguments)
+	protected function doTasks(Subject $subject)
 	{
 		foreach ($this->getTasks() as $task) {
-			$task->execute($message, $additionalArguments);
+			$task->execute($subject);
 		}
 	}
 

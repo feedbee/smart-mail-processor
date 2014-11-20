@@ -2,14 +2,13 @@
 
 namespace Feedbee\Smp\Condition;
 
-use Zend\Mail\Message;
+use Feedbee\Smp\Subject;
 
 interface ConditionInterface
 {
     /**
-     * @param \Zend\Mail\Message $message
-     * @param array $additionalArguments
+     * @param \Feedbee\Smp\Subject $subject
      * @return bool
      */
-    public function validate(Message $message, array $additionalArguments);
+    public function validate(Subject $subject);
 }
