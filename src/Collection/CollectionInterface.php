@@ -4,11 +4,6 @@ namespace Feedbee\Smp\Collection;
 
 interface CollectionInterface extends \IteratorAggregate
 {
-	/**
-	 * @param array $values
-	 */
-	public function __construct(array $values = []);
-
     /**
      * @return array
      */
