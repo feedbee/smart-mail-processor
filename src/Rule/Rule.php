@@ -83,7 +83,7 @@ class Rule implements RuleInterface
     /**
      * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      */
-    public function addRule(ConditionInterface $condition)
+    public function addCondition(ConditionInterface $condition)
     {
         $this->conditions->addValue($condition);
     }
@@ -91,7 +91,7 @@ class Rule implements RuleInterface
     /**
      * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      */
-    public function removeRule(ConditionInterface $condition)
+    public function removeCondition(ConditionInterface $condition)
     {
         $this->conditions->removeValue($condition);
     }
@@ -100,7 +100,7 @@ class Rule implements RuleInterface
      * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      * @return bool
      */
-    public function hasRule(ConditionInterface $condition)
+    public function hasCondition(ConditionInterface $condition)
     {
         return $this->conditions->hasValue($condition);
     }

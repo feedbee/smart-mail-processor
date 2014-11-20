@@ -1,7 +1,8 @@
 <?php
 
-namespace Feedbee\Smp\Condition;
+namespace Feedbee\Smp\Condition\Modifier;
 
+use Feedbee\Smp\Condition\ConditionInterface;
 use Feedbee\Smp\Subject;
 
 class Decorator implements ConditionInterface

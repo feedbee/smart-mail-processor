@@ -17,7 +17,7 @@ interface RuleInterface
 	/**
 	 * @param \Feedbee\Smp\Condition\ConditionInterface $condition
 	 */
-	public function addRule(ConditionInterface $condition);
+	public function addCondition(ConditionInterface $condition);
 
 	/**
 	 * @return \Feedbee\Smp\Task\TaskInterface[]
@@ -28,7 +28,7 @@ interface RuleInterface
 	 * @param \Feedbee\Smp\Condition\ConditionInterface $condition
 	 * @return bool
 	 */
-	public function hasRule(ConditionInterface $condition);
+	public function hasCondition(ConditionInterface $condition);
 
 	/**
 	 * @return \Feedbee\Smp\Condition\ConditionInterface[]
@@ -64,5 +64,5 @@ interface RuleInterface
 	/**
 	 * @param \Feedbee\Smp\Condition\ConditionInterface $condition
 	 */
-	public function removeRule(ConditionInterface $condition);
+	public function removeCondition(ConditionInterface $condition);
 }
