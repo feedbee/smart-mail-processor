@@ -4,7 +4,6 @@ namespace Feedbee\Smp;
 
 use Feedbee\Smp\Collection\UniqueCollection;
 use Feedbee\Smp\Rule\RuleInterface;
-use Feedbee\Smp\Task\TaskInterface;
 use Zend\Mail\Message;
 
 class Processor
