@@ -5,7 +5,7 @@ namespace Feedbee\Smp\Task;
 use Feedbee\Smp\Action\ActionInterface;
 use Zend\Mail\Message;
 
-class Task
+class Task implements TaskInterface
 {
     /**
      * @var \Feedbee\Smp\Action\ActionInterface

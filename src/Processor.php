@@ -3,14 +3,14 @@
 namespace Feedbee\Smp;
 
 use Feedbee\Smp\Collection\UniqueCollection;
-use Feedbee\Smp\Rule\Rule;
-use Feedbee\Smp\Task\Task;
+use Feedbee\Smp\Rule\RuleInterface;
+use Feedbee\Smp\Task\TaskInterface;
 use Zend\Mail\Message;
 
 class Processor
 {
     /**
-     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Rule\Rule[]
+     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Rule\RuleInterface[]
      */
     private $rules = [];
 
@@ -31,7 +31,7 @@ class Processor
     /**
      * @param \Zend\Mail\Message $message
      * @param array $additionalArguments
-     * @return Task[]
+     * @return TaskInterface[]
      */
     protected function applyRules(Message $message, array $additionalArguments)
     {
@@ -50,7 +50,7 @@ class Processor
     /**
      * @param \Zend\Mail\Message Message $message
      * @param array $additionalArguments
-     * @param \Feedbee\Smp\Task\Task[] $tasks
+     * @param \Feedbee\Smp\Task\TaskInterface[] $tasks
      */
     protected function doTasks(Message $message, array $additionalArguments, array $tasks)
     {
@@ -60,7 +60,7 @@ class Processor
     }
 
     /**
-     * @return \Feedbee\Smp\Rule\Rule[]
+     * @return \Feedbee\Smp\Rule\RuleInterface[]
      */
     public function getRules()
     {
@@ -68,7 +68,7 @@ class Processor
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\Rule[] $rules
+     * @param \Feedbee\Smp\Rule\RuleInterface[] $rules
      */
     public function setRules(array $rules)
     {
@@ -76,26 +76,26 @@ class Processor
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\Rule $rule
+     * @param \Feedbee\Smp\Rule\RuleInterface $rule
      */
-    public function addRule(Rule $rule)
+    public function addRule(RuleInterface $rule)
     {
         $this->rules->addValue($rule);
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\Rule $rule
+     * @param \Feedbee\Smp\Rule\RuleInterface $rule
      */
-    public function removeRule(Rule $rule)
+    public function removeRule(RuleInterface $rule)
     {
         $this->rules->removeValue($rule);
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\Rule $rules
+     * @param \Feedbee\Smp\Rule\RuleInterface $rules
      * @return bool
      */
-    public function hasRule(Rule $rules)
+    public function hasRule(RuleInterface $rules)
     {
         return $this->rules->hasValue($rules);
     }

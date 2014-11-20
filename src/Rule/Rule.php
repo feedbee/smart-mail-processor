@@ -4,9 +4,9 @@ namespace Feedbee\Smp\Rule;
 
 use Feedbee\Smp\Collection\UniqueCollection;
 use Feedbee\Smp\Condition\ConditionInterface;
-use Feedbee\Smp\Task\Task;
+use Feedbee\Smp\Task\TaskInterface;
 
-class Rule
+class Rule implements RuleInterface
 {
     /**
      * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Condition\ConditionInterface[]
@@ -14,7 +14,7 @@ class Rule
     private $conditions;
 
     /**
-     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Task\Task[]
+     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Task\TaskInterface[]
      */
     private $tasks;
 
@@ -66,7 +66,7 @@ class Rule
     }
 
     /**
-     * @return \Feedbee\Smp\Task\Task[]
+     * @return \Feedbee\Smp\Task\TaskInterface[]
      */
     public function getTasks()
     {
@@ -74,7 +74,7 @@ class Rule
     }
 
     /**
-     * @param \Feedbee\Smp\Task\Task[] $tasks
+     * @param \Feedbee\Smp\Task\TaskInterface[] $tasks
      */
     public function setTasks(array $tasks)
     {
@@ -82,26 +82,26 @@ class Rule
     }
 
     /**
-     * @param \Feedbee\Smp\Task\Task $task
+     * @param \Feedbee\Smp\Task\TaskInterface $task
      */
-    public function addTasks(Task $task)
+    public function addTasks(TaskInterface $task)
     {
         $this->tasks->addValue($task);
     }
 
     /**
-     * @param \Feedbee\Smp\Task\Task $task
+     * @param \Feedbee\Smp\Task\TaskInterface $task
      */
-    public function removeTasks(Task $task)
+    public function removeTasks(TaskInterface $task)
     {
         $this->tasks->removeValue($task);
     }
 
     /**
-     * @param \Feedbee\Smp\Task\Task $task
+     * @param \Feedbee\Smp\Task\TaskInterface $task
      * @return bool
      */
-    public function hasTask(Task $task)
+    public function hasTask(TaskInterface $task)
     {
         return $this->tasks->hasValue($task);
     }
