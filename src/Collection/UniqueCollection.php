@@ -10,7 +10,7 @@ class UniqueCollection extends Collection
      */
     public function setValues(array $values)
     {
-        parent::setValues(array_unique($values));
+        parent::setValues(array_unique($values, SORT_REGULAR));
 
         return $this;
     }
