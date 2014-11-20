@@ -1,10 +1,10 @@
 <?php
 
-namespace Feedbee\Smp\Rule;
+namespace Feedbee\Smp\Condition;
 
 use \Zend\Mail\Message;
 
-class HasHeader implements RuleInterface
+class HasHeader implements ConditionInterface
 {
     /**
      * @var string

@@ -4,62 +4,62 @@ namespace Feedbee\Smp;
 
 use Feedbee\Smp\Collection\UniqueCollection;
 
-class RulesAndTasks
+class Rule
 {
     /**
-     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Rule\RuleInterface[]
+     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Condition\ConditionInterface[]
      */
-    private $rules;
+    private $conditions;
     /**
      * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Task[]
      */
     private $tasks;
 
-    public function __construct(array $rules, array $tasks)
+    public function __construct(array $conditions, array $tasks)
     {
-        $this->rules = new UniqueCollection($rules);
+        $this->conditions = new UniqueCollection($conditions);
         $this->tasks = new UniqueCollection($tasks);
     }
 
     /**
-     * @return \Feedbee\Smp\Rule\RuleInterface[]
+     * @return \Feedbee\Smp\Condition\ConditionInterface[]
      */
-    public function getRules()
+    public function getConditions()
     {
-        return $this->rules->getValues();
+        return $this->conditions->getValues();
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\RuleInterface[] $rules
+     * @param \Feedbee\Smp\Condition\ConditionInterface[] $conditions
      */
-    public function setRules(array $rules)
+    public function setConditions(array $conditions)
     {
-        $this->rules->setValues($rules);
+        $this->conditions->setValues($conditions);
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\RuleInterface $rule
+     * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      */
-    public function addRule(Rule\RuleInterface $rule)
+    public function addRule(Condition\ConditionInterface $condition)
     {
-        $this->rules->addValue($rule);
+        $this->conditions->addValue($condition);
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\RuleInterface $rule
+     * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      */
-    public function removeRule(Rule\RuleInterface $rule)
+    public function removeRule(Condition\ConditionInterface $condition)
     {
-        $this->rules->removeValue($rule);
+        $this->conditions->removeValue($condition);
     }
 
     /**
-     * @param \Feedbee\Smp\Rule\RuleInterface $rule
+     * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      * @return bool
      */
-    public function hasRule(Rule\RuleInterface $rule)
+    public function hasRule(Condition\ConditionInterface $condition)
     {
-        return $this->rules->hasValue($rule);
+        return $this->conditions->hasValue($condition);
     }
 
     /**

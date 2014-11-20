@@ -8,13 +8,13 @@ use Zend\Mail\Message;
 class Processor
 {
     /**
-     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\RulesAndTasks[]
+     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Rule[]
      */
-    private $rulesAndTasks = [];
+    private $rules = [];
 
     public function __construct()
     {
-        $this->rulesAndTasks = new UniqueCollection;
+        $this->rules = new UniqueCollection;
     }
 
     /**
@@ -34,13 +34,13 @@ class Processor
     protected function applyRules(Message $message, array $additionalArguments)
     {
         $tasks = [];
-        foreach ($this->rulesAndTasks as $rat) {
-            foreach ($rat->getRules() as $rule) {
-                if (!$rule->validate($message, $additionalArguments)) {
+        foreach ($this->getRules() as $rule) {
+            foreach ($rule->getConditions() as $condition) {
+                if (!$condition->validate($message, $additionalArguments)) {
                     continue 2;
                 }
             }
-            $tasks += $rat->getTasks();
+            $tasks += $rule->getTasks();
         }
         return $tasks;
     }
@@ -58,43 +58,43 @@ class Processor
     }
 
     /**
-     * @return \Feedbee\Smp\RulesAndTasks[]
+     * @return \Feedbee\Smp\Rule[]
      */
-    public function getRulesAndTasks()
+    public function getRules()
     {
-        return $this->rulesAndTasks->getValues();
+        return $this->rules->getValues();
     }
 
     /**
-     * @param \Feedbee\Smp\RulesAndTasks[] $rules
+     * @param \Feedbee\Smp\Rule[] $rules
      */
-    public function setRulesAndTasks(array $rules)
+    public function setRules(array $rules)
     {
-        $this->rulesAndTasks->setValues($rules);
+        $this->rules->setValues($rules);
     }
 
     /**
-     * @param \Feedbee\Smp\RulesAndTasks $rulesAndTasksItem
+     * @param \Feedbee\Smp\Rule $rule
      */
-    public function addRulesAndTasks(RulesAndTasks $rulesAndTasksItem)
+    public function addRule(Rule $rule)
     {
-        $this->rulesAndTasks->addValue($rulesAndTasksItem);
+        $this->rules->addValue($rule);
     }
 
     /**
-     * @param \Feedbee\Smp\RulesAndTasks $rulesAndTasksItem
+     * @param \Feedbee\Smp\Rule $rule
      */
-    public function removeRulesAndTasks(RulesAndTasks $rulesAndTasksItem)
+    public function removeRule(Rule $rule)
     {
-        $this->rulesAndTasks->removeValue($rulesAndTasksItem);
+        $this->rules->removeValue($rule);
     }
 
     /**
-     * @param \Feedbee\Smp\RulesAndTasks $rulesAndTasksItem
+     * @param \Feedbee\Smp\Rule $rules
      * @return bool
      */
-    public function hasRulesAndTasks(RulesAndTasks $rulesAndTasksItem)
+    public function hasRule(Rule $rules)
     {
-        return $this->rulesAndTasks->hasValue($rulesAndTasksItem);
+        return $this->rules->hasValue($rules);
     }
 }

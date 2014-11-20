@@ -8,16 +8,16 @@
  */
 
 if ($argc < 2) {
-    die('Sender address required as the first parameter');
+    die("Sender address required as the first parameter\n");
 }
 $senderAddress = $argv[1];
 
 $rawMessage = file_get_contents('php://stdin');
 if ($rawMessage === false) {
-    die('Can\'t read standard input to get message body');
+    die("Can't read standard input to get message body\n");
 }
 if (count($rawMessage) < 1) {
-    die('Message body (read from standard input) is empty');
+    die("Message body (read from standard input) is empty\n");
 }
 
 $rawClearedMessage = substr($rawMessage, strpos($rawMessage, "\n") + 1);

@@ -10,6 +10,7 @@ class Task
      * @var \Feedbee\Smp\Action\ActionInterface
      */
     private $action;
+
     /**
      * @var array
      */

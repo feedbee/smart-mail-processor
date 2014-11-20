@@ -1,10 +1,10 @@
 <?php
 
-namespace Feedbee\Smp\Rule;
+namespace Feedbee\Smp\Condition;
 
 use Zend\Mail\Message;
 
-interface RuleInterface
+interface ConditionInterface
 {
     /**
      * @param \Zend\Mail\Message $message
