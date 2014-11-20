@@ -40,7 +40,7 @@ class RulesAndTasks
     /**
      * @param \Feedbee\Smp\Rule\RuleInterface $rule
      */
-    public function addRule(\Feedbee\Smp\Rule\RuleInterface $rule)
+    public function addRule(Rule\RuleInterface $rule)
     {
         $this->rules->addValue($rule);
     }
@@ -48,7 +48,7 @@ class RulesAndTasks
     /**
      * @param \Feedbee\Smp\Rule\RuleInterface $rule
      */
-    public function removeRule(\Feedbee\Smp\Rule\RuleInterface $rule)
+    public function removeRule(Rule\RuleInterface $rule)
     {
         $this->rules->removeValue($rule);
     }
@@ -57,7 +57,7 @@ class RulesAndTasks
      * @param \Feedbee\Smp\Rule\RuleInterface $rule
      * @return bool
      */
-    public function hasRule(\Feedbee\Smp\Rule\RuleInterface $rule)
+    public function hasRule(Rule\RuleInterface $rule)
     {
         return $this->rules->hasValue($rule);
     }
@@ -81,7 +81,7 @@ class RulesAndTasks
     /**
      * @param \Feedbee\Smp\Task $task
      */
-    public function addTasks(\Feedbee\Smp\Task $task)
+    public function addTasks(Task $task)
     {
         $this->tasks->addValue($task);
     }
@@ -89,7 +89,7 @@ class RulesAndTasks
     /**
      * @param \Feedbee\Smp\Task $task
      */
-    public function removeTasks(\Feedbee\Smp\Task $task)
+    public function removeTasks(Task $task)
     {
         $this->tasks->removeValue($task);
     }
@@ -98,7 +98,7 @@ class RulesAndTasks
      * @param \Feedbee\Smp\Task $task
      * @return bool
      */
-    public function hasTask(\Feedbee\Smp\Task $task)
+    public function hasTask(Task $task)
     {
         return $this->tasks->hasValue($task);
     }
