@@ -1,6 +1,6 @@
 <?php
 
-namespace Feedbee\Smp\Condition\Modifier;
+namespace Feedbee\Smp\Condition\Callback;
 
 use Feedbee\Smp\Condition\ConditionInterface;
 use Feedbee\Smp\Subject;
