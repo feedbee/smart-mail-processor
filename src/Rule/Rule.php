@@ -1,8 +1,10 @@
 <?php
 
-namespace Feedbee\Smp;
+namespace Feedbee\Smp\Rule;
 
 use Feedbee\Smp\Collection\UniqueCollection;
+use Feedbee\Smp\Condition\ConditionInterface;
+use Feedbee\Smp\Task\Task;
 
 class Rule
 {
@@ -10,8 +12,9 @@ class Rule
      * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Condition\ConditionInterface[]
      */
     private $conditions;
+
     /**
-     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Task[]
+     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Task\Task[]
      */
     private $tasks;
 
@@ -40,7 +43,7 @@ class Rule
     /**
      * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      */
-    public function addRule(Condition\ConditionInterface $condition)
+    public function addRule(ConditionInterface $condition)
     {
         $this->conditions->addValue($condition);
     }
@@ -48,7 +51,7 @@ class Rule
     /**
      * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      */
-    public function removeRule(Condition\ConditionInterface $condition)
+    public function removeRule(ConditionInterface $condition)
     {
         $this->conditions->removeValue($condition);
     }
@@ -57,13 +60,13 @@ class Rule
      * @param \Feedbee\Smp\Condition\ConditionInterface $condition
      * @return bool
      */
-    public function hasRule(Condition\ConditionInterface $condition)
+    public function hasRule(ConditionInterface $condition)
     {
         return $this->conditions->hasValue($condition);
     }
 
     /**
-     * @return \Feedbee\Smp\Task[]
+     * @return \Feedbee\Smp\Task\Task[]
      */
     public function getTasks()
     {
@@ -71,7 +74,7 @@ class Rule
     }
 
     /**
-     * @param \Feedbee\Smp\Task[] $tasks
+     * @param \Feedbee\Smp\Task\Task[] $tasks
      */
     public function setTasks(array $tasks)
     {
@@ -79,7 +82,7 @@ class Rule
     }
 
     /**
-     * @param \Feedbee\Smp\Task $task
+     * @param \Feedbee\Smp\Task\Task $task
      */
     public function addTasks(Task $task)
     {
@@ -87,7 +90,7 @@ class Rule
     }
 
     /**
-     * @param \Feedbee\Smp\Task $task
+     * @param \Feedbee\Smp\Task\Task $task
      */
     public function removeTasks(Task $task)
     {
@@ -95,7 +98,7 @@ class Rule
     }
 
     /**
-     * @param \Feedbee\Smp\Task $task
+     * @param \Feedbee\Smp\Task\Task $task
      * @return bool
      */
     public function hasTask(Task $task)

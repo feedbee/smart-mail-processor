@@ -2,7 +2,7 @@
 
 namespace Feedbee\Smp\Condition;
 
-use \Zend\Mail\Message;
+use Zend\Mail\Message;
 
 class HasHeader implements ConditionInterface
 {

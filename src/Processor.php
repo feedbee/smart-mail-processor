@@ -3,12 +3,14 @@
 namespace Feedbee\Smp;
 
 use Feedbee\Smp\Collection\UniqueCollection;
+use Feedbee\Smp\Rule\Rule;
+use Feedbee\Smp\Task\Task;
 use Zend\Mail\Message;
 
 class Processor
 {
     /**
-     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Rule[]
+     * @var \Feedbee\Smp\Collection\UniqueCollection|\Feedbee\Smp\Rule\Rule[]
      */
     private $rules = [];
 
@@ -48,7 +50,7 @@ class Processor
     /**
      * @param \Zend\Mail\Message Message $message
      * @param array $additionalArguments
-     * @param \Feedbee\Smp\Task[] $tasks
+     * @param \Feedbee\Smp\Task\Task[] $tasks
      */
     protected function doTasks(Message $message, array $additionalArguments, array $tasks)
     {
@@ -58,7 +60,7 @@ class Processor
     }
 
     /**
-     * @return \Feedbee\Smp\Rule[]
+     * @return \Feedbee\Smp\Rule\Rule[]
      */
     public function getRules()
     {
@@ -66,7 +68,7 @@ class Processor
     }
 
     /**
-     * @param \Feedbee\Smp\Rule[] $rules
+     * @param \Feedbee\Smp\Rule\Rule[] $rules
      */
     public function setRules(array $rules)
     {
@@ -74,7 +76,7 @@ class Processor
     }
 
     /**
-     * @param \Feedbee\Smp\Rule $rule
+     * @param \Feedbee\Smp\Rule\Rule $rule
      */
     public function addRule(Rule $rule)
     {
@@ -82,7 +84,7 @@ class Processor
     }
 
     /**
-     * @param \Feedbee\Smp\Rule $rule
+     * @param \Feedbee\Smp\Rule\Rule $rule
      */
     public function removeRule(Rule $rule)
     {
@@ -90,7 +92,7 @@ class Processor
     }
 
     /**
-     * @param \Feedbee\Smp\Rule $rules
+     * @param \Feedbee\Smp\Rule\Rule $rules
      * @return bool
      */
     public function hasRule(Rule $rules)

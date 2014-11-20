@@ -1,8 +1,9 @@
 <?php
 
-namespace Feedbee\Smp;
+namespace Feedbee\Smp\Task;
 
-use \Zend\Mail\Message;
+use Feedbee\Smp\Action\ActionInterface;
+use Zend\Mail\Message;
 
 class Task
 {
@@ -20,7 +21,7 @@ class Task
      * @param \Feedbee\Smp\Action\ActionInterface $action
      * @param array $parameters
      */
-    public function __construct(Action\ActionInterface $action, array $parameters = [])
+    public function __construct(ActionInterface $action, array $parameters = [])
     {
         $this->setAction($action);
         $this->setData($parameters);
@@ -37,7 +38,7 @@ class Task
     }
 
     /**
-     * @return Action\ActionInterface
+     * @return \Feedbee\Smp\Action\ActionInterface
      */
     public function getAction()
     {
@@ -45,9 +46,9 @@ class Task
     }
 
     /**
-     * @param Action\ActionInterface $action
+     * @param \Feedbee\Smp\Action\ActionInterface $action
      */
-    public function setAction(Action\ActionInterface $action)
+    public function setAction(ActionInterface $action)
     {
         $this->action = $action;
     }
