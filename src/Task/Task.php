@@ -21,7 +21,7 @@ class Task implements TaskInterface
      * @param \Feedbee\Smp\Action\ActionInterface $action
      * @param array $parameters
      */
-    public function __construct(ActionInterface $action, array $parameters = [])
+    public function __construct(ActionInterface $action = null, array $parameters = [])
     {
         $this->setAction($action);
         $this->setData($parameters);

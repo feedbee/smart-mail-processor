@@ -1,7 +1,6 @@
 {
     "name": "feedbee/smart-mail-processor",
     "description": "Mail processor written in PHP can be used in conjunction with SMTP server (like exim4)",
-    "minimum-stability": "dev",
     "license": "BSD (3-Clause) License",
     "authors": [
         {
@@ -17,6 +16,7 @@
     "require": {
         "php": ">=5.4.0",
         "monolog/monolog": "1.8.*",
-        "zendframework/zend-mail": "~2.0"
+        "zendframework/zend-mail": "~2.0",
+        "zendframework/zend-validator": "~2.0"
     }
 }

@@ -19,7 +19,7 @@ class Rule implements RuleInterface
      */
     private $tasks;
 
-    public function __construct(array $conditions, array $tasks)
+    public function __construct(array $conditions = null, array $tasks = null)
     {
         $this->conditions = new UniqueCollection($conditions);
         $this->tasks = new UniqueCollection($tasks);

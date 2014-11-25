@@ -20,7 +20,7 @@ class Subject
 	 * @param \Zend\Mail\Message $message
 	 * @param array $additionalArguments
 	 */
-	function __construct(Message $message, array $additionalArguments)
+	function __construct(Message $message = null, array $additionalArguments = null)
 	{
 		$this->message = $message;
 		$this->additionalArguments = $additionalArguments;
