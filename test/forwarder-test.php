@@ -12,7 +12,7 @@ $processor->addRule(new \Feedbee\Smp\Rule\Rule(
         new \Feedbee\Smp\Condition\Header\HasHeader('Subject'),
         new \Feedbee\Smp\Condition\Header\HeaderValueRegexp('From', '/feedbee/'),
     ],
-    [new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\ForwardAction(
+    [new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\Forward(
         new \Feedbee\Smp\Sender\Smtp(new \Zend\Mail\Transport\Smtp(new \Zend\Mail\Transport\SmtpOptions($config['smtp']))),
         $config['forward']['to'],
         $config['forward']['from'],

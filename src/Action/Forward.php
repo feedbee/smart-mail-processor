@@ -8,7 +8,7 @@ use Feedbee\Smp\Subject;
 use Zend\Mail\Header\Date;
 use Zend\Mail\Message;
 
-class ForwardAction implements ActionInterface
+class Forward implements ActionInterface
 {
     /**
      * @var \Feedbee\Smp\Sender\SenderInterface
