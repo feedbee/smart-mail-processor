@@ -32,6 +32,6 @@ class MailAddress extends Address
             return [trim($m[1]), $m[2]];
         }
 
-        return $string;
+        return [$string, null];
     }
 }
