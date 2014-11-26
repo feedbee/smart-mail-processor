@@ -6,10 +6,6 @@ list($message, $additionalData) = require __DIR__ . '/../includes/message-pipe.p
 
 $config = require 'config.php';
 
-
-
-
-
 $processor = new \Feedbee\Smp\Processor;
 $processor->addRule(new \Feedbee\Smp\Rule\Rule(
     [
