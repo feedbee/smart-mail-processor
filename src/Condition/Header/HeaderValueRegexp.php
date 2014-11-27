@@ -21,7 +21,7 @@ class HeaderValueRegexp extends HeaderValueCallback
 
     public function callback($headerValue)
     {
-        return preg_match($this->getRegexp(), $headerValue);
+        return preg_match($this->getRegexp(),  trim($headerValue));
     }
 
     /**
