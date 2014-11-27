@@ -2,10 +2,6 @@
 
 namespace Feedbee\Smp\Condition\Header;
 
-use Feedbee\Smp\Condition\Callback\Callback as CallbackCondition;
-use Feedbee\Smp\Subject;
-use Zend\Mail\Header\HeaderInterface;
-
 class HeaderValueRegexp extends HeaderValueCallback
 {
     /**
@@ -20,7 +16,6 @@ class HeaderValueRegexp extends HeaderValueCallback
     public function __construct($headerName, $regexp)
     {
         $this->setRegexp($regexp);
-        $that = $this;
         parent::__construct($headerName, array($this, 'callback'));
     }
 

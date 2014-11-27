@@ -1,6 +1,6 @@
 <?php
 
-namespace Feedbee\Smp\Condition\Header;
+namespace Feedbee\Smp\Helper;
 
 trait HeaderTrait
 {
@@ -8,14 +8,6 @@ trait HeaderTrait
      * @var string
      */
     private $headerName;
-
-    /**
-     * @param string $headerName
-     */
-    public function __construct($headerName)
-    {
-        $this->headerName = $headerName;
-    }
 
     /**
      * @param string $headerName

@@ -3,6 +3,7 @@
 namespace Feedbee\Smp\Condition\Header;
 
 use Feedbee\Smp\Condition\Callback\Callback as CallbackCondition;
+use Feedbee\Smp\Helper\HeaderTrait;
 use Feedbee\Smp\Subject;
 use Zend\Mail\Header\HeaderInterface;
 

@@ -3,6 +3,7 @@
 namespace Feedbee\Smp\Condition\Header;
 
 use Feedbee\Smp\Condition\ConditionInterface;
+use Feedbee\Smp\Helper\HeaderTrait;
 use Feedbee\Smp\Subject;
 
 class HasHeader implements ConditionInterface
