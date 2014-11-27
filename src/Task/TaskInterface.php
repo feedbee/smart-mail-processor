@@ -10,15 +10,20 @@ interface TaskInterface
     /**
      * @return array
      */
-    public function getData();
+    public function getParameters();
 
     /**
      * @param mixed array
      */
-    public function setData(array $data);
+    public function setParameters(array $data);
 
     /**
+     * Return true to stop tasks applying and make this
+     * task the last. Return false or null (return nothing)
+     * to continue processing
+     *
      * @param \Feedbee\Smp\Subject $subject
+     * @return bool|null|void
      */
     public function execute(Subject $subject);
 

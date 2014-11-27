@@ -15,7 +15,7 @@ class Task implements TaskInterface
     /**
      * @var array
      */
-    private $data;
+    private $parameters;
 
     /**
      * @param \Feedbee\Smp\Action\ActionInterface $action
@@ -24,16 +24,19 @@ class Task implements TaskInterface
     public function __construct(ActionInterface $action = null, array $parameters = [])
     {
         $this->setAction($action);
-        $this->setData($parameters);
+        $this->setParameters($parameters);
     }
 
     /**
      * @param \Feedbee\Smp\Subject $subject
+     * @return bool|null|void
      */
     public function execute(Subject $subject)
     {
         $action = $this->getAction();
         $action($subject);
+
+        return false; // continue processing
     }
 
     /**
@@ -55,16 +58,16 @@ class Task implements TaskInterface
     /**
      * @return array
      */
-    public function getData()
+    public function getParameters()
     {
-        return $this->data;
+        return $this->parameters;
     }
 
     /**
      * @param mixed array
      */
-    public function setData(array $data)
+    public function setParameters(array $data)
     {
-        $this->data = $data;
+        $this->parameters = $data;
     }
 }

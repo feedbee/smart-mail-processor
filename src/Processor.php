@@ -34,7 +34,10 @@ class Processor
     protected function applyRules(Subject $subject)
     {
         foreach ($this->getRules() as $rule) {
-			$rule->apply($subject);
+			$continue = (true !== $rule->apply($subject));
+            if (!$continue) {
+                break;
+            }
         }
     }
 

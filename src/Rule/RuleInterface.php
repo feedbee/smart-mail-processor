@@ -9,8 +9,12 @@ use Feedbee\Smp\Subject;
 interface RuleInterface
 {
 	/**
+     * Return true to stop rules applying and make this
+     * rule the last. Return false or null (return nothing)
+     * to continue processing
+     *
 	 * @param \Feedbee\Smp\Subject $subject
-	 * @return bool
+	 * @return bool|null|void
 	 */
 	public function apply(Subject $subject);
 

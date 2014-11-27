@@ -27,13 +27,12 @@ class Rule implements RuleInterface
 
 	/**
 	 * @param \Feedbee\Smp\Subject $subject
-	 * @return bool
+	 * @return bool|null|void
 	 */
 	public function apply(Subject $subject)
 	{
 		if ($this->checkConditions($subject)) {
 			$this->doTasks($subject);
-			return true;
 		}
 
 		return false;
@@ -60,7 +59,10 @@ class Rule implements RuleInterface
 	protected function doTasks(Subject $subject)
 	{
 		foreach ($this->getTasks() as $task) {
-			$task->execute($subject);
+            $continue = (true !== $task->execute($subject));
+            if (!$continue) {
+                break;
+            }
 		}
 	}
 
