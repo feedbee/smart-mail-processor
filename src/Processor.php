@@ -34,7 +34,7 @@ class Processor
     protected function applyRules(Subject $subject)
     {
         foreach ($this->getRules() as $rule) {
-			$continue = (true !== $rule->apply($subject));
+			$continue = (true !== $rule->apply(clone $subject));
             if (!$continue) {
                 break;
             }
