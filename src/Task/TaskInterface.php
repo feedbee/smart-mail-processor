@@ -7,28 +7,28 @@ use Feedbee\Smp\Subject;
 
 interface TaskInterface
 {
-	/**
-	 * @param \Feedbee\Smp\Action\ActionInterface $action
-	 */
-	public function setAction(ActionInterface $action);
+    /**
+     * @return array
+     */
+    public function getData();
 
-	/**
-	 * @return array
-	 */
-	public function getData();
+    /**
+     * @param mixed array
+     */
+    public function setData(array $data);
 
-	/**
-	 * @param \Feedbee\Smp\Subject $subject
-	 */
-	public function execute(Subject $subject);
+    /**
+     * @param \Feedbee\Smp\Subject $subject
+     */
+    public function execute(Subject $subject);
 
-	/**
-	 * @return \Feedbee\Smp\Action\ActionInterface
-	 */
-	public function getAction();
+    /**
+     * @param \Feedbee\Smp\Action\ActionInterface $action
+     */
+    public function setAction(ActionInterface $action);
 
-	/**
-	 * @param mixed array
-	 */
-	public function setData(array $data);
+    /**
+     * @return \Feedbee\Smp\Action\ActionInterface
+     */
+    public function getAction();
 }
