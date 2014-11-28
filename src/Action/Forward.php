@@ -70,11 +70,11 @@ class Forward implements ActionInterface
 
         if (!is_null($from = $this->getForwardFrom())) {
             $mailFrom = new MailAddress($from);
-            $message->setSender($mailFrom->getEmail());
             $message->setReplyTo($mailFrom);
 
             if ($this->getOverrideFrom()) {
                 $message->setFrom($mailFrom);
+                $message->setSender($mailFrom->getEmail());
             }
         }
 
