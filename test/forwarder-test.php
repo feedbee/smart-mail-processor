@@ -15,7 +15,7 @@ $processor->addRule(new \Feedbee\Smp\Rule\Rule(
     [
         new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\SetHeader('X-Test-Header', "Testing")),
         new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\Forward(
-            new \Feedbee\Smp\Sender\Smtp(new \Zend\Mail\Transport\Smtp(new \Zend\Mail\Transport\SmtpOptions($config['smtp']))),
+            new \Feedbee\Smp\Sender\Smtp(new \Feedbee\Smp\Mail\SmtpTransport(new \Zend\Mail\Transport\SmtpOptions($config['smtp']))),
             $config['forward']['to'],
             $config['forward']['from'],
             $config['forward']['return-path']

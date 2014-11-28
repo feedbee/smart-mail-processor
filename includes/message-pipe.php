@@ -21,6 +21,6 @@ if (count($rawMessage) < 1) {
 }
 
 $rawClearedMessage = substr($rawMessage, strpos($rawMessage, "\n") + 1);
-$message = \Zend\Mail\Message::fromString($rawClearedMessage);
+$message = \Feedbee\Smp\Mail\Message::fromString($rawClearedMessage);
 
 return [$message, ['sender_address' => $senderAddress]];

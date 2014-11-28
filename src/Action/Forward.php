@@ -28,20 +28,35 @@ class Forward implements ActionInterface
     /**
      * @var string
      */
-    private $returnPath;
+    private $bouncesEmail;
+
+    /**
+     * @var bool
+     */
+    private $overrideTo;
+
+    /**
+     * @var bool
+     */
+    private $overrideFrom;
 
     /**
      * @param \Feedbee\Smp\Sender\SenderInterface $sender
      * @param string $forwardTo
      * @param string $forwardFrom
-     * @param string $returnPath
+     * @param string $bouncesEmail
+     * @param bool $overrideTo
+     * @param bool $overrideFrom
      */
-    public function __construct(SenderInterface $sender = null, $forwardTo = null, $forwardFrom = null, $returnPath = null)
+    public function __construct(SenderInterface $sender = null, $forwardTo = null, $forwardFrom = null, $bouncesEmail = null,
+                                $overrideTo = true, $overrideFrom = true)
     {
-        $this->sender = $sender;
-        $this->forwardTo = $forwardTo;
-        $this->forwardFrom = $forwardFrom;
-        $this->returnPath = $returnPath;
+        $this->setSender($sender);
+        $this->setForwardTo($forwardTo);
+        $this->setForwardFrom($forwardFrom);
+        $this->setBouncesEmail($bouncesEmail);
+        $this->setOverrideTo($overrideTo);
+        $this->setOverrideFrom($overrideFrom);
     }
 
     /**
@@ -54,14 +69,28 @@ class Forward implements ActionInterface
         self::refreshMessageDate($message);
 
         if (!is_null($from = $this->getForwardFrom())) {
-            $message->setFrom(new MailAddress($from));
-            $message->setSender((new MailAddress($from))->getEmail());
-        }
-        if (!is_null($returnPath = $this->getReturnPath())) {
-            $message->setReplyTo($returnPath);
+            $mailFrom = new MailAddress($from);
+            $message->setSender($mailFrom->getEmail());
+            $message->setReplyTo($mailFrom);
+
+            if ($this->getOverrideFrom()) {
+                $message->setFrom($mailFrom);
+            }
         }
 
-        $message->setTo(new MailAddress($this->getForwardTo()));
+        if (!is_null($returnPath = $this->getBouncesEmail())) {
+            $message->setReturnPath($returnPath);
+        }
+
+        $message->setReturnPath($returnPath);
+
+        if (!is_null($to = $this->getForwardTo())) {
+            if ($this->getOverrideTo()) {
+                $message->setTo(new MailAddress($to));
+            } else {
+                $message->setRecipients([(new MailAddress($to))->getEmail()]);
+            }
+        }
 
         $this->getSender()->send($subject->getMessage());
     }
@@ -127,16 +156,48 @@ class Forward implements ActionInterface
     /**
      * @param string $returnPath
      */
-    public function setReturnPath($returnPath)
+    public function setBouncesEmail($returnPath)
     {
-        $this->returnPath = $returnPath;
+        $this->bouncesEmail = $returnPath;
     }
 
     /**
      * @return string
      */
-    public function getReturnPath()
+    public function getBouncesEmail()
     {
-        return $this->returnPath;
+        return $this->bouncesEmail;
+    }
+
+    /**
+     * @param boolean $overrideFrom
+     */
+    public function setOverrideFrom($overrideFrom)
+    {
+        $this->overrideFrom = $overrideFrom;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getOverrideFrom()
+    {
+        return $this->overrideFrom;
+    }
+
+    /**
+     * @param boolean $overrideTo
+     */
+    public function setOverrideTo($overrideTo)
+    {
+        $this->overrideTo = $overrideTo;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getOverrideTo()
+    {
+        return $this->overrideTo;
     }
 }

@@ -2,12 +2,12 @@
 
 namespace Feedbee\Smp;
 
-use \Zend\Mail\Message;
+use \Feedbee\Smp\Mail\Message;
 
 class Subject
 {
 	/**
-	 * @var \Zend\Mail\Message
+	 * @var \Feedbee\Smp\Mail\Message
 	 */
 	private $message;
 
@@ -17,7 +17,7 @@ class Subject
 	private $additionalArguments;
 
 	/**
-	 * @param \Zend\Mail\Message $message
+	 * @param \Feedbee\Smp\Mail\Message $message
 	 * @param array $additionalArguments
 	 */
 	function __construct(Message $message = null, array $additionalArguments = null)
@@ -27,7 +27,7 @@ class Subject
 	}
 
 	/**
-	 * @param \Zend\Mail\Message $message
+	 * @param \Feedbee\Smp\Mail\Message $message
 	 */
 	public function setMessage(Message $message)
 	{
@@ -35,7 +35,7 @@ class Subject
 	}
 
 	/**
-	 * @return \Zend\Mail\Message
+	 * @return \Feedbee\Smp\Mail\Message
 	 */
 	public function getMessage()
 	{
