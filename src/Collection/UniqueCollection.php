@@ -10,6 +10,8 @@ class UniqueCollection extends Collection
      */
     public function setValues(array $values)
     {
+        parent::__construct();
+
         foreach ($values as $value) {
             $this->addValue($value);
         }
