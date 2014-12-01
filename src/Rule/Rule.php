@@ -35,7 +35,7 @@ class Rule implements RuleInterface
 			$this->doTasks($subject);
 		}
 
-		return false;
+		return false; // continue processing
 	}
 
 	/**
