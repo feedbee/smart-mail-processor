@@ -9,7 +9,6 @@ use Feedbee\Smp\Subject;
 class SetHeader extends Callback
 {
     use HeaderTrait;
-    use ValueTrait;
 
     /**
      * @var bool
@@ -18,26 +17,30 @@ class SetHeader extends Callback
 
     /**
      * @param string $headerName
-     * @param string $headerValue
      * @param bool $override
      */
-    public function __construct($headerName, $headerValue, $override = true)
+    public function __construct($headerName, $override = true)
     {
         parent::__construct([$this, 'callback']);
         $this->setHeaderName($headerName);
-        $this->setValue($headerValue);
         $this->setOverride($override);
     }
 
     /**
      * @param \Feedbee\Smp\Subject $subject
+     * @param array $params
+     * @throws \Exception
      */
-    public function callback(Subject $subject)
+    public function callback(Subject $subject, array $params)
     {
+        if (!isset($params['value'])) {
+            throw new \Exception('Value parameter is not set for SetHeader action');
+        }
+
         $headers = $subject->getMessage()->getHeaders();
         if ($this->getOverride() || !$headers->has($this->getHeaderName()))
         {
-            $headers->addHeaderLine($this->getHeaderName(), $this->getValue());
+            $headers->addHeaderLine($this->getHeaderName(), $params['value']);
         }
     }
 

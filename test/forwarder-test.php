@@ -13,7 +13,12 @@ $processor->addRule(new \Feedbee\Smp\Rule\Rule(
         new \Feedbee\Smp\Condition\Header\HeaderValueRegexp('From', '/feedbee/'),
     ],
     [
-        new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\SetHeader('X-Test-Header', "Testing")),
+        new \Feedbee\Smp\Task\Task(
+            new \Feedbee\Smp\Action\SetHeader('X-Test-Header'),
+            [
+                'value' => 'Testing',
+            ]
+        ),
         new \Feedbee\Smp\Task\Task(
             new \Feedbee\Smp\Action\Forward(
                 new \Feedbee\Smp\Sender\Smtp(new \Feedbee\Smp\Mail\SmtpTransport(new \Zend\Mail\Transport\SmtpOptions($config['smtp'])))
