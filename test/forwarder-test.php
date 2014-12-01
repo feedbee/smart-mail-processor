@@ -14,12 +14,16 @@ $processor->addRule(new \Feedbee\Smp\Rule\Rule(
     ],
     [
         new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\SetHeader('X-Test-Header', "Testing")),
-        new \Feedbee\Smp\Task\Task(new \Feedbee\Smp\Action\Forward(
-            new \Feedbee\Smp\Sender\Smtp(new \Feedbee\Smp\Mail\SmtpTransport(new \Zend\Mail\Transport\SmtpOptions($config['smtp']))),
-            $config['forward']['to'],
-            $config['forward']['from'],
-            $config['forward']['return-path']
-        ))
+        new \Feedbee\Smp\Task\Task(
+            new \Feedbee\Smp\Action\Forward(
+                new \Feedbee\Smp\Sender\Smtp(new \Feedbee\Smp\Mail\SmtpTransport(new \Zend\Mail\Transport\SmtpOptions($config['smtp'])))
+            ),
+            [
+                'forward-to' => $config['forward']['to'],
+                'forward-from' => $config['forward']['from'],
+                'bounces-to' => $config['forward']['return-path'],
+            ]
+        )
     ]
 ));
 $processor->process($message, $additionalData);

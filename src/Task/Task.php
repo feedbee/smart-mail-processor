@@ -34,7 +34,7 @@ class Task implements TaskInterface
     public function execute(Subject $subject)
     {
         $action = $this->getAction();
-        $action($subject);
+        $action($subject, $this->getParameters());
 
         return false; // continue processing
     }

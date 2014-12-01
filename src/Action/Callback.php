@@ -19,10 +19,11 @@ class Callback implements ActionInterface
 
     /**
      * @param \Feedbee\Smp\Subject $subject
+     * @param array $parameters
      * @return void
      */
-    public function __invoke(Subject $subject)
+    public function __invoke(Subject $subject, array $parameters)
     {
-        $this->executeCallback($subject);
+        $this->executeCallback($subject, $parameters);
     }
 }
