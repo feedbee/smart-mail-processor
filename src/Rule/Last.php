@@ -12,8 +12,12 @@ class Last extends Rule
 	 */
 	public function apply(Subject $subject)
 	{
-		parent::apply($subject);
+        if ($this->checkConditions($subject)) {
+            $this->doTasks($subject);
 
-		return true; // stop processing
+            return true; // stop processing
+        }
+
+		return false; // continue processing
 	}
 }
