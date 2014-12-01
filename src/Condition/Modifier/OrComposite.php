@@ -4,7 +4,7 @@ namespace Feedbee\Smp\Condition\Modifier;
 
 use Feedbee\Smp\Subject;
 
-class AndComposite extends Composite
+class OrComposite extends Composite
 {
     /**
      * @param \Feedbee\Smp\Subject $subject
