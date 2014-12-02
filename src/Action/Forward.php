@@ -32,7 +32,6 @@ class Forward implements ActionInterface
     {
         $message = $subject->getMessage();
         self::refreshMessageDate($message);
-        $message->setEncoding('UTF-8');
 
         if (isset($parameters['forward-from']) && !is_null($parameters['forward-from'])) {
             $mailFrom = new MailAddress($parameters['forward-from']);
@@ -40,7 +39,7 @@ class Forward implements ActionInterface
 
             if (isset($parameters['override-from']) && $parameters['override-from']) {
                 $message->setFrom($mailFrom);
-                $message->setSender($mailFrom->getEmail());
+                $message->setSender($mailFrom);
             }
         }
 
@@ -56,6 +55,8 @@ class Forward implements ActionInterface
             }
         }
 
+        self::setEncodingToHeadersNeedToBeEncoded($message);//
+
         $this->getSender()->send($subject->getMessage());
     }
 
@@ -67,6 +68,23 @@ class Forward implements ActionInterface
         $messageHeaders = $message->getHeaders();
         $messageHeaders->removeHeader('date');
         $messageHeaders->addHeader(Date::fromString('Date: ' . date('r')));
+    }
+
+    /**
+     * Workaround for ZF2 issue https://github.com/zendframework/zf2/issues/2492
+     *
+     * @param \Zend\Mail\Message $message
+     */
+    static private function setEncodingToHeadersNeedToBeEncoded(Message $message)
+    {
+        $headers = $message->getHeaders();
+        $headers->has('to') && $headers->get('to')->setEncoding('UTF-8');
+        $headers->has('from') && $headers->get('from')->setEncoding('UTF-8');
+        $headers->has('reply-to') && $headers->get('reply-to')->setEncoding('UTF-8');
+        $headers->has('sender') && $headers->get('sender')->setEncoding('UTF-8');
+        $headers->has('cc') && $headers->get('cc')->setEncoding('UTF-8');
+        $headers->has('bcc') && $headers->get('bcc')->setEncoding('UTF-8');
+        $headers->has('subject') && $headers->get('subject')->setEncoding('UTF-8');
     }
 
     /**
