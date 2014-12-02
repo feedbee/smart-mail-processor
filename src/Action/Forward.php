@@ -32,6 +32,7 @@ class Forward implements ActionInterface
     {
         $message = $subject->getMessage();
         self::refreshMessageDate($message);
+        $message->setEncoding('UTF-8');
 
         if (isset($parameters['forward-from']) && !is_null($parameters['forward-from'])) {
             $mailFrom = new MailAddress($parameters['forward-from']);
