@@ -3,16 +3,17 @@
 namespace Feedbee\Smp\Mail;
 
 use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Message as ZendMessage;
 
 class SmtpTransport extends Smtp
 {
     /**
      * Retrieve email address for envelope FROM
      *
-     * @param  Message $message
+     * @param  ZendMessage $message
      * @return string
      */
-    protected function prepareFromAddress(Message $message)
+    protected function prepareFromAddress(ZendMessage $message)
     {
         if ($message instanceof Message && !is_null($realSender = $message->getReturnPath()))
         {
@@ -25,10 +26,10 @@ class SmtpTransport extends Smtp
     /**
      * Prepare array of email address recipients
      *
-     * @param  Message $message
+     * @param  ZendMessage $message
      * @return array
      */
-    protected function prepareRecipients(Message $message)
+    protected function prepareRecipients(ZendMessage $message)
     {
         if ($message instanceof Message && !is_null($recipients = $message->getRecipients()))
         {
