@@ -16,7 +16,7 @@ $rawMessage = file_get_contents('php://stdin');
 if ($rawMessage === false) {
     die("Can't read standard input to get message body\n");
 }
-if (count($rawMessage) < 1) {
+if (strlen($rawMessage) < 1) {
     die("Message body (read from standard input) is empty\n");
 }
 
